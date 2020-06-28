@@ -1,0 +1,13 @@
+{
+  "name": "vk-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "vkcli.js",
+  "dependencies": {
+    "commander": "^5.1.0",
+    "easyvk": "^2.7.35"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
