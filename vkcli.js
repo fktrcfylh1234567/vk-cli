@@ -10,12 +10,19 @@ async function status() {
     console.log(data)
 }
 
+/**
+ * @param {{depth:number}} cmd
+ */
 async function list(cmd) {
     const vk = await vkApi.getVK()
     const data = await conversations.getAllConversations(vk, cmd.depth || 5)
     console.log(data)
 }
 
+/**
+ * @param target
+ * @param {{nut:boolean, message:string}} cmd
+ */
 async function push(target, cmd) {
     const vk = await vkApi.getVK()
 

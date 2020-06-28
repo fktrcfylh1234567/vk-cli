@@ -18,6 +18,11 @@ async function getUnreadConversations(vk) {
     return res.items.map(it => parseConversation(it))
 }
 
+/**
+ * @param {{text:string, from_id:string}} item.last_message
+ * @param {{type:string, id:string}} item.conversation.peer
+ * @param {{title:string}} item.conversation.chat_settings
+ */
 function parseConversation(item) {
     const conversation = item.conversation
     const last_message = item.last_message

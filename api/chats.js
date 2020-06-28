@@ -1,18 +1,3 @@
-async function getAllUnreadMessages(vk) {
-    const res = await vk.call('messages.getConversations', {
-        filter: 'unread'
-    })
-
-    console.log(res)
-
-    if (res.count === 0)
-        return []
-
-    for (const it in res.items) {
-        await getChatHistory(vk, it.last_message.peer_id)
-    }
-}
-
 async function getChatHistory(vk, peer_id, depth) {
     const res = await vk.call('messages.getHistory', {
         peer_id: peer_id,
