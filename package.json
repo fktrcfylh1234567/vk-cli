@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "vkcli.js",
+  "bin": {
+    "vk-cli": "./vkcli.js"
+  },
   "dependencies": {
     "commander": "^5.1.0",
     "easyvk": "^2.7.35"

@@ -1,4 +1,6 @@
-const {program} = require('commander');
+#!/usr/bin/env node
+
+const program = require("commander").program;
 
 const vkApi = require("./api/vk");
 const conversations = require("./api/conversations");
@@ -67,4 +69,4 @@ program
     .option('-n, --nut', 'Push nut of justice ')
     .action(async (destination, cmd) => await push(destination, cmd));
 
-program.parse(process.argv)
+program.parse(process.argv);
