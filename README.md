@@ -20,7 +20,7 @@ export vk_pass=<your_password>
 
 (Optional) To enable bash autocomplete, add this line to your .bashrc file:
 ```sh
-complete -W "status listen push id ls help" vk-cli
+complete -W "status listen push pull id ls help" vk-cli
 ```
 
 # Usage
