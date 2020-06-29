@@ -7,6 +7,9 @@ async function getAllConversations(vk, depth) {
     return res.items.map(it => parseConversation(it))
 }
 
+/**
+ * @return {Array.<{peer_id: Number}>} data
+ */
 async function getUnreadConversations(vk) {
     const res = await vk.call('messages.getConversations', {
         filter: 'unread'
@@ -16,6 +19,14 @@ async function getUnreadConversations(vk) {
         return []
 
     return res.items.map(it => parseConversation(it))
+}
+
+async function markConversationAsRead(vk, peerId) {
+    console.log("markConversationAsRead", peerId)
+    await vk.call('messages.markAsRead', {
+        mark_conversation_as_read: 1,
+        peer_id: peerId,
+    });
 }
 
 /**
@@ -42,3 +53,4 @@ function parseConversation(item) {
 
 exports.getAllConversations = getAllConversations;
 exports.getUnreadConversations = getUnreadConversations;
+exports.markConversationAsRead = markConversationAsRead;

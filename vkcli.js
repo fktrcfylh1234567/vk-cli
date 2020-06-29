@@ -4,12 +4,18 @@ const program = require("commander").program;
 
 const vkApi = require("./api/vk");
 const conversations = require("./api/conversations");
-const messages = require("./api/messages");
+const messages = require("./api/push");
 
-async function status() {
+async function status(cmd) {
     const vk = await vkApi.getVK()
     const data = await conversations.getUnreadConversations(vk)
     console.log(data)
+
+    if (cmd.force) {
+        for (const it of data) {
+            await conversations.markConversationAsRead(vk, it.peer_id)
+        }
+    }
 }
 
 /**
@@ -49,6 +55,7 @@ async function whoIAm() {
 program
     .command('status')
     .description('list all unread chats')
+    .option('-f, --force', 'marks conversation as read')
     .action(status);
 
 program
