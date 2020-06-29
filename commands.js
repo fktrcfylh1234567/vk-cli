@@ -21,17 +21,20 @@ exports.status = async function status(cmd) {
  */
 exports.list = async function list(cmd) {
     const vk = await vkApi.getVK()
-    const data = await conversations.getAllConversations(vk, cmd.depth || 5)
-    console.log(data)
+    const chats = await conversations.getAllConversations(vk, cmd.depth || 5)
+    console.log(chats)
 }
 
 exports.listen = async function listen() {
     const vk = await vkApi.getVK()
 
-    const data = await conversations.getUnreadConversations(vk)
-    console.log(data)
+    const unreadChats = await conversations.getUnreadConversations(vk)
 
-    await longpoll.listenForMessages(vk);
+    for (const it of unreadChats) {
+        console.log(it)
+    }
+
+    longpoll.listenForMessages(vk, msg => console.log(msg));
 }
 
 /**

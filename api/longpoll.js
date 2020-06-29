@@ -1,13 +1,38 @@
+/**
+ * Called after doing asynchronous stuff.
+ * @name OnNewMessageCallback
+ * @function
+ * @param {String} msg
+ */
+
+/**
+ * @param {{longpoll:Object}} vk
+ * @param {function({text: string, peer_id: number})} callback
+ */
+function listenForMessages(vk, callback) {
+    vk.longpoll.connect().then((connection) => {
+        connection.on('message', (it) => {
+            const messageParsed = parseMessage(it)
+            callback(messageParsed)
+        })
+    })
+}
+
+exports.listenForMessages = listenForMessages;
+
+
+/**
+ * @param {Array} msgRaw
+ * @return {{text: string, peer_id: number}}
+ */
 function parseMessage(msgRaw = []) {
-    const IS_OUT = 2;
     const PEER = 3;
     const TEXT = 5;
     const INFO = 6;
 
     const msg = {
         text: msgRaw[TEXT],
-        peer_id: msgRaw[PEER],
-        isOut: msgRaw[IS_OUT]
+        peer_id: msgRaw[PEER]
     }
 
     const info = msgRaw[INFO]
@@ -22,18 +47,3 @@ function parseMessage(msgRaw = []) {
 
     return msg
 }
-
-/**
- * @param {{longpoll:Object}} vk
- */
-async function listenForMessages(vk) {
-    vk.longpoll.connect().then((connection) => {
-        connection.on('message', (it) => {
-            const messageParsed = parseMessage(it)
-            console.log(messageParsed)
-            console.log('')
-        })
-    })
-}
-
-exports.listenForMessages = listenForMessages;

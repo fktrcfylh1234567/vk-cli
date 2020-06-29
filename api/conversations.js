@@ -8,7 +8,7 @@ async function getAllConversations(vk, depth) {
 }
 
 /**
- * @return {Array.<{peer_id: Number}>} data
+ * @return {Array.<{peer_id: Number}>}
  */
 async function getUnreadConversations(vk) {
     const res = await vk.call('messages.getConversations', {
