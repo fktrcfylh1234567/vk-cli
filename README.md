@@ -20,7 +20,7 @@ export vk_pass=<your_password>
 
 (Optional) To enable bash autocomplete, add this line to your .bashrc file:
 ```sh
-complete -W "status push id ls help" vk-cli
+complete -W "status listen push id ls help" vk-cli
 ```
 
 # Usage
@@ -35,7 +35,13 @@ List chats with new messages
 ```sh
 vk-cli status
 ```
+
 Send message
 ```sh
 vk-cli push <peer-id> -m <message>
+```
+
+Listen for new messages
+```sh
+vk-cli listen
 ```

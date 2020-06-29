@@ -5,6 +5,7 @@ const program = require("commander").program;
 const vkApi = require("./api/vk");
 const conversations = require("./api/conversations");
 const messages = require("./api/push");
+const longpoll = require("./api/longpoll");
 
 async function status(cmd) {
     const vk = await vkApi.getVK()
@@ -25,6 +26,11 @@ async function list(cmd) {
     const vk = await vkApi.getVK()
     const data = await conversations.getAllConversations(vk, cmd.depth || 5)
     console.log(data)
+}
+
+async function listen() {
+    const vk = await vkApi.getVK()
+    await longpoll.listenForMessages(vk);
 }
 
 /**
@@ -68,6 +74,11 @@ program
     .description('list last chats')
     .option('-d, --depth <count>', 'Specify how many chats to list')
     .action(async (cmd) => await list(cmd));
+
+program
+    .command('listen')
+    .description('listen for messages')
+    .action(listen);
 
 program
     .command('push <destination>')
