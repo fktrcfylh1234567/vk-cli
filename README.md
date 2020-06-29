@@ -45,3 +45,8 @@ Listen for new messages
 ```sh
 vk-cli listen
 ```
+
+Get last messages from chat
+```sh
+vk-cli pull <peer_id> -d <count>
+```

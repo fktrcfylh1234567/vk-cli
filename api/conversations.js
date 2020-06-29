@@ -22,7 +22,6 @@ async function getUnreadConversations(vk) {
 }
 
 async function markConversationAsRead(vk, peerId) {
-    console.log("markConversationAsRead", peerId)
     await vk.call('messages.markAsRead', {
         mark_conversation_as_read: 1,
         peer_id: peerId,

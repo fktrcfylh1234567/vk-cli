@@ -13,5 +13,4 @@ function parseMessages(res) {
     }).reverse()
 }
 
-exports.getAllUnreadMessages = getAllUnreadMessages;
 exports.getChatHistory = getChatHistory;

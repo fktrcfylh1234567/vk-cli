@@ -2,6 +2,7 @@
   <dictionary name="fktrc">
     <words>
       <w>easyvk</w>
+      <w>longpoll</w>
     </words>
   </dictionary>
 </component>
