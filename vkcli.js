@@ -30,6 +30,10 @@ async function list(cmd) {
 
 async function listen() {
     const vk = await vkApi.getVK()
+
+    const data = await conversations.getUnreadConversations(vk)
+    console.log(data)
+
     await longpoll.listenForMessages(vk);
 }
 
