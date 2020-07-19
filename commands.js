@@ -39,7 +39,7 @@ exports.listen = async function listen() {
 
 /**
  * @param target
- * @param {{nut:boolean, message:string}} cmd
+ * @param {{message:string, nut:boolean, hhh:boolean}} cmd
  */
 exports.push = async function push(target, cmd) {
     const vk = await vkApi.getVK()
@@ -47,6 +47,12 @@ exports.push = async function push(target, cmd) {
     if (cmd.nut) {
         await messages.send_nut(vk, target)
         console.log("Nut pushed successfully.")
+        return
+    }
+
+    if (cmd.hhh) {
+        await messages.send_hhh(vk, target)
+        console.log("хЪЪ pushed successfully.")
         return
     }
 

@@ -29,6 +29,7 @@ program
     .description('push a message')
     .option('-m, --message <message>', 'Specify a message')
     .option('-n, --nut', 'Push nut of justice ')
+    .option('-h, --hhh', 'Push хЪ+ ')
     .action(async (destination, cmd) => await push(destination, cmd));
 
 program
