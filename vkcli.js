@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const program = require("commander").program;
 const {listen, whoIAm, status, push, list, pull} = require("./commands")
+const {removeNuts} = require("./api/nuts.remover")
 
 program
     .command('status')
@@ -37,5 +38,10 @@ program
     .description('pull unread messages from chat')
     .option('-d, --depth <count>', 'Specify how many messages to pull')
     .action(async (peer_id, cmd) => await pull(peer_id, cmd));
+
+program
+    .command('remove-nuts <peer_id>')
+    .description('remove nuts from chat')
+    .action(async (peer_id, _) => await removeNuts(peer_id));
 
 program.parse(process.argv);
