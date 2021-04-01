@@ -46,7 +46,7 @@ function parseConversation(item) {
         type: conversation.peer.type,
         last_message: last_message.text,
         last_message_from: last_message.from_id,
-        unread_count: conversation.unread_count
+        unread_count: conversation.unread_count || 0
     }
 }
 
