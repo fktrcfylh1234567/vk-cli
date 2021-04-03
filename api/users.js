@@ -1,6 +1,6 @@
 async function getUserFullName(vk, userId) {
     const info = await getUserInfo(vk, userId)
-    return info.first_name + " " + info.last_name
+    return info[0].first_name + " " + info[0].last_name
 }
 
 /**
